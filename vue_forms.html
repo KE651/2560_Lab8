@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vue Forms</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+<div id="app">
+    <!-- everything that Vue manages goes in this div template -->
+    <h1>Forms with Vue</h1>
+
+    <label for="name">Please enter your name: </label>
+    <input v-model="name" id="name">
+
+    <div v-if="name">
+        <p>Your name is {{ name }}. </p>
+         <!-- conditional rendering -->
+       <button v-on:click="clearNameButton">Clear</button>
+    </div>
+    <div v-else>
+        <p>Awaiting user input.</p>
+    </div>
+</div>
+
+<script>
+    let app=Vue.createApp({
+        data () {
+            return {
+                name: ''  }   }, // end data
+        methods: {
+            clearNameButton: function (event) {
+                this.name = ""   }     } // end methods
+    })  // end createApp
+    app.mount('#app')
+</script>
+</body>
+</html>
