@@ -24,7 +24,7 @@
             <tr>
                 <td>{{  name  }}</td>
                 <td>{{  unitPrice  }}</td>
-                <td> <input type="number" id="quantity" v-model="quantity"> </td>
+                <td> <input type="number" id="quantity" min="0" v-model="quantity"> </td>
                 <td>${{  totalCost  }}</td>
             </tr>
         </table>
