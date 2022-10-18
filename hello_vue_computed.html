@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello Vue</title>
+        <script src="https://unpkg.com/vue@next"></script>
+    </head>
+
+    <body>
+    <div id="app">
+        <h1>Hello Vue</h1>
+        <p>{{messageWithExclamPoints}}</p>
+        <button v-on:click="addExclamation">Add !</button>
+        <button v-on:click="clearExclamation">Clear !</button>
+    </div>
+
+        <script>
+            let startMessage = "Guten Tag"
+            let app = Vue.createApp({
+                el: '#app',
+                data() {
+                    return {
+                        message: startMessage,
+                        numExclamPoints: 0
+                    }
+                }, // end data
+                methods: {
+                    addExclamation() {
+                        // console.log("add !", this.numExclamPoints) // for debugging
+                        if (this.numExclamPoints < 10) {
+                            // console.log("if statement reached") // for debugging
+                            // this.message = this.message + '!' // used prior to computed property
+                            this.numExclamPoints ++ 
+                            // console.log(this.numExclamPoints) for debugging
+                        }   // end if
+                        else {alert('That is quite enough exclamation.')}
+                    },
+                    clearExclamation() {
+                        // console.log("message = " + this.message) // for debugging
+                        // this.message = startMessage // used this prior to computed property
+                        this.numExclamPoints = 0
+                    }  
+                },// end methods    
+                
+                computed: {
+                    messageWithExclamPoints() {
+                        let messageWithPoints = this.message
+                        // console.log("computed") // for debugging
+                        for (let x = 0; x< this.numExclamPoints; x++) {
+                            messageWithPoints = messageWithPoints + '!'
+                        } // end for
+                        return messageWithPoints
+                        }
+                    } // end computed
+                
+            })   // end Vue.createApp
+    
+        app.mount('#app')
+        </script>
+    </body>
+</html>
